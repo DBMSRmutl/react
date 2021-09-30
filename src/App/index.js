@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="jumbotron mb-0 text-white bg" style={{ height: '100%' }}>
-          <h1 className="display-3 ">Welcome to React</h1>
+          <h1 className="display-3 ">Bonn Welcome to React</h1>
           <div className="my-3"><Facebook /></div>
           <div className="my-5">
             <img className="logo" src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="" style={{ height: '200px', width: '200px' }} />

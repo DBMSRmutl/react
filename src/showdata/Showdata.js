@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import Modal from 'react-awesome-modal';
 import './Showdata.css';
+//import '../../server/app';
 import {ip,port} from "../setIP/setting";
 
 export default class Showdata extends Component{
@@ -15,18 +16,23 @@ export default class Showdata extends Component{
         }
         this.handleChang = this.handleChang.bind(this);
         this.handleClicked = this.handleClicked.bind(this);
+        //console.log("hello show data");
     }
     componentDidMount() {
+        //console.log("before get data");
         this.getData();
+        //console.log("after get data");
     }
     getData = () => {
+        console.log("before fetch data");
         fetch('/data')
             .then(res => res.json())
             .then(list => this.setState({ list }))
+        console.log("after fetch data");
     }
 
     onDelete=(user)=>{
-        let url = `https://chonlawit.icanocr.com/delete`;
+        let url = `https://localhost:3000/delete`;
         let data = {
             idkey:user.id
         }
@@ -57,7 +63,7 @@ export default class Showdata extends Component{
         this.setState({
             [e.target.id]: e.target.value
         });
-        let url = `https://chonlawit.icanocr.com/data`;
+        let url = `https://localhost:3000/data`;
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
@@ -67,7 +73,7 @@ export default class Showdata extends Component{
     }
 
     handleClicked(){
-        let url = `https://chonlawit.icanocr.com/data`;
+        let url = `https://localhost:3000/data`;
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
@@ -92,9 +98,11 @@ export default class Showdata extends Component{
                 <div className="container p-3 my-3 bg-dark text-white">
                     <table className="table table-dark">
                         <thead>
+                            <tr>
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            </tr>
                         </thead>
                         <tbody>
                                 {list.map((user) =>{

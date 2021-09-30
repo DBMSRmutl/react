@@ -8,19 +8,21 @@ app.use(body());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 const db = mysql.createConnection({
-    host: '34.87.188.226',
-    user: 'root',
-    password: 'chonlawit123',
+    host: '172.30.240.1',
+    user: 'bonn',
+    password: '1234',
     database: 'testing'
 });
 // show data
 app.get('/data', function(req,res){
-    let sql = 'SELECT * FROM users';
+    console.log("Hello in /data ");
+    let sql = 'SELECT * FROM users;';
     db.query(sql, (err, result)=>{
         if(err) throw err;
-         console.log(result);
-         res.json(result);
+        console.log(result);
+        res.json(result);
     });
+    console.log("after query");
 });
 
 //delete
