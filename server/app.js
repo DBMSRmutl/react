@@ -1,14 +1,24 @@
 const express = require('express');
 const path = require('path');
 const body = require('body-parser');
-const app = express();
+//const app = express();
 const mysql = require('mysql');
+
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var privateKey  = fs.readFileSync('key.pem', 'utf8');
+var certificate = fs.readFileSync('cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+const app = express();
+
+var httpsServer = https.createServer(credentials, app);
 
 app.use(body());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 const db = mysql.createConnection({
-    host: '172.30.240.1',
+    host: '172.27.224.1',
     user: 'bonn',
     password: '1234',
     database: 'testing'
@@ -68,4 +78,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
-module.exports = app;
+
+
+
+//module.exports = app;
+module.exports = httpsServer;
