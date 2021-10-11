@@ -32,7 +32,7 @@ export default class Showdata extends Component{
     }
 
     onDelete=(user)=>{
-        let url = `https://localhost:3000/delete`;
+        let url = `https://rmutl.xyz:3000/delete`;
         let data = {
             idkey:user.id
         }
@@ -63,7 +63,7 @@ export default class Showdata extends Component{
         this.setState({
             [e.target.id]: e.target.value
         });
-        let url = `https://localhost:3000/data`;
+        let url = `https://rmutl.xyz:3000/data`;
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
@@ -73,7 +73,7 @@ export default class Showdata extends Component{
     }
 
     handleClicked(){
-        let url = `https://localhost:3000/data`;
+        let url = `https://rmutl.xyz:3000/data`;
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
