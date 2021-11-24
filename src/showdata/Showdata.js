@@ -112,7 +112,7 @@ export default class Showdata extends Component{
                                             <td>{user.firstname}</td>
                                             <td>{user.lastname}</td>
                                             <td><button type="button" class="btn btn-warning" onClick={()=>this.call(user)}>Edit</button></td>
-                                            <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delet</button></td>
+                                            <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delete</button></td>
                                             <div className="box">
                                                 <Modal visible={this.state.visible}
                                                        width="1200"
